@@ -7,7 +7,7 @@ const { body, validationResult } = require("express-validator");
 exports.genre_list = async (req, res, next) => {
   const allGenres = await Genre.find().sort({ name: 1 }).exec();
   res.render("genre_list", {
-    title: "Genre List",
+    title: "ジャンル一覧",
     list_genres: allGenres,
   });
 };
@@ -27,7 +27,7 @@ exports.genre_detail = async (req, res, next) => {
   }
 
   res.render("genre_detail", {
-    title: "Genre Detail",
+    title: "ジャンル詳細",
     genre,
     genre_books: booksInGenre,
   });
@@ -35,7 +35,7 @@ exports.genre_detail = async (req, res, next) => {
 
 // Display Genre create form on GET.
 exports.genre_create_get = (req, res, next) => {
-  res.render("genre_form", { title: "Create Genre" });
+  res.render("genre_form", { title: "ジャンルを作成" });
 };
 
 // Handle Genre create on POST.
@@ -57,7 +57,7 @@ exports.genre_create_post = [
     if (!errors.isEmpty()) {
       // There are errors. Render the form again with sanitized values/error messages.
       res.render("genre_form", {
-        title: "Create Genre",
+        title: "ジャンルを作成",
         genre,
         errors: errors.array(),
       });
@@ -94,7 +94,7 @@ exports.genre_delete_get = async (req, res, next) => {
   }
 
   res.render("genre_delete", {
-    title: "Delete Genre",
+    title: "ジャンルを削除",
     genre,
     genre_books: booksInGenre,
   });
@@ -111,7 +111,7 @@ exports.genre_delete_post = async (req, res, next) => {
   if (booksInGenre.length > 0) {
     // Genre has books. Render in same way as for GET route.
     res.render("genre_delete", {
-      title: "Delete Genre",
+      title: "ジャンルを削除",
       genre,
       genre_books: booksInGenre,
     });
@@ -134,7 +134,7 @@ exports.genre_update_get = async (req, res, next) => {
     return next(err);
   }
 
-  res.render("genre_form", { title: "Update Genre", genre });
+  res.render("genre_form", { title: "ジャンルを更新", genre });
 };
 
 // Handle Genre update on POST.
@@ -159,7 +159,7 @@ exports.genre_update_post = [
     if (!errors.isEmpty()) {
       // There are errors. Render the form again with sanitized values and error messages.
       res.render("genre_form", {
-        title: "Update Genre",
+        title: "ジャンルを更新",
         genre,
         errors: errors.array(),
       });
