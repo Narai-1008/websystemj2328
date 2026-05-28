@@ -20,14 +20,14 @@ const limiter = RateLimit({
   max: 60,
 });
 // Apply rate limiter to all requests
-app.use(limiter);
+mongodb://localhost:27017/local_library
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
 app.use(logger("dev"));
-mongodb://localhost:27017/local_library
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
